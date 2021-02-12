@@ -53,3 +53,30 @@ const sumOddLengthSubarrays = function(arr) {
         } newArr.length = 0
     } return sum
 };
+
+// Richest Customer Wealth - Leetcode
+
+// You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank. Return the wealth that the richest customer has.
+// A customer's wealth is the amount of money they have in all their bank accounts. The richest customer is the customer that has the maximum wealth.
+
+// pseudocode
+// create a variable to hold the currently found richest person
+// create a nest for loop, where the first loop iterates through the length of accounts array, and the second iterates through the nested array at the index of i
+// then store the results of a reduce method implemented on that nested array, and if that result is greater than the current richest person stored in our variable, reassign that variable to the latest sum
+// return the sum
+
+var maximumWealth = function(accounts) {
+    let biggestCashCow = 0
+    for(let i = 0; i < accounts.length; i++){
+          let result = 0
+        for(let j = 0; j < accounts[i].length; j++){
+            result = accounts[i].reduce((total, num)=>{
+                return total + num
+            })
+           if(result > biggestCashCow){
+               biggestCashCow = result
+           }
+        }
+    }
+    return biggestCashCow
+};
