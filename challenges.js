@@ -80,3 +80,29 @@ var maximumWealth = function(accounts) {
     }
     return biggestCashCow
 };
+
+
+// Number of Good Pairs - Leetcode
+
+// Given an array of integers nums.
+// A pair (i,j) is called good if nums[i] == nums[j] and i < j.
+// Return the number of good pairs.
+
+// pseudocode
+// set a variable to hold the total number of good pairs
+// create a nested for loop, where the first loop start at 0 and the the second loop starts at 1
+// if arr[i] == arr[j] and i > j, increment pairs by 1
+// return total good pairs
+
+var numIdenticalPairs = function(nums) {
+    let pairs = 0
+    for(let i = 0; i < nums.length; i++){
+        for(let j = 1; j < nums.length; j++){
+            if( nums[i] == nums[j] && i < j){
+                pairs++
+            }
+        }
+    }
+    
+    return pairs
+};
