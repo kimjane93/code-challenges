@@ -106,3 +106,46 @@ var numIdenticalPairs = function(nums) {
     
     return pairs
 };
+
+
+// Shuffle The Array
+
+// Given the array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn], and a second argumeny of n.
+// Return the array in the form [x1,y1,x2,y2,...,xn,yn]
+// Input: nums = [2,5,1,3,4,7], n = 3
+// Output: [2,3,5,4,1,7] 
+// Explanation: Since x1=2, x2=5, x3=1, y1=3, y2=4, y3=7 then the answer is [2,3,5,4,1,7].
+// constraint nums.length == 2n
+
+// pseudocode
+// set an empty array to receive the alternating indexed values
+// loop through the nums array, with i being less than nums length divided by two, as we will be inserting two shuffled values per iteration of i, so we do not need to the full length of nums, keeping in mind that nums will be 2*n
+// for each iteration of i, first push the value at nums[i] into the new array
+// then push nums[i + n] to alternate values based on the n argument that gives you your second starting point
+// increment n++ at the end of each iteration
+// return shuffled array 
+
+var shuffle = function(nums, n) {
+    let shuffledArr = []
+    for(let i = 0; i < nums.length/2; i++){
+            shuffledArr.push(nums[i])
+            shuffledArr.push(nums[n])
+        n++
+    }
+    return shuffledArr
+};
+
+
+
+// Shuffle String - Leetcode
+
+// Given a string s and an integer array indices of the same length.
+// The string s will be shuffled such that the character at the ith position moves to indices[i] in the shuffled string.
+// Return the shuffled string.
+
+// pseudocode
+// set an empty array to receive the shuffled values
+// loop through the string and use i to determine where the value of s[i] will go in the new array based on the value of indicces[i]
+// splice the value into the new array
+// return the new array joined into a string
+
