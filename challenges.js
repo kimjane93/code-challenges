@@ -136,6 +136,39 @@ var shuffle = function(nums, n) {
 };
 
 
+// Best Time to Buy and Sell Stock - Leetcode
+
+
+// You are given an array prices where prices[i] is the price of a given stock on the ith day.
+// You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+// Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+// pseudocode
+// set a variable to hold the cheapest price to buy at starting at index of 0
+// set a variable to hold the maximum profit starting at 0
+// use a for loop to iterate through the prices array and find the cheapest price, storing cheapest price and comparing it against the current value of i as the current price it is being compared against, use ternary to reset values of cheapest price as needed
+// set current potential profit variable to equal currentprice - cheapest price after ternary set/comparison
+// conditonally reset max profit variable if current profit is greater than max profit's current value
+// return maximum profit
+
+
+var maxProfit = function(prices) {
+    let cheapestPrice = prices[0];
+    let maxProfit = 0;
+    
+    for (let i = 0; i < prices.length; i++) {
+        let currentPrice = prices[i]
+        cheapestPrice = (currentPrice < cheapestPrice) ? currentPrice : cheapestPrice
+        let profit = currentPrice - cheapestPrice
+        maxProfit = (profit > maxProfit) ? profit : maxProfit   
+    }
+    
+    return maxProfit;
+};
+
+
+
+
 
 // Shuffle String - Leetcode
 
