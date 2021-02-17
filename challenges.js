@@ -167,6 +167,39 @@ var maxProfit = function(prices) {
 };
 
 
+// Find the Highest Altitude - Leetcode
+
+// There is a biker going on a road trip. The road trip consists of n + 1 points at different altitudes. The biker starts his trip on point 0 with altitude equal 0.
+// You are given an integer array gain of length n where gain[i] is the net gain in altitude between points i​​​​​​ and i + 1 for all (0 <= i < n). Return the highest altitude of a point.
+
+// Example 2:
+
+// Input: gain = [-4,-3,-2,-1,4,3,2]
+// Output: 0
+// Explanation: The altitudes are [0,-4,-7,-9,-10,-6,-3,-1]. The highest is 0.
+
+
+// pseudocode
+
+// set a new variable to hold an array that will receive the values of the gains between altitude points, with a starting value of zero per description
+// loop through the gains array, adding index of i and i + 1 together to get the next value to n+1 length
+// sort? or loop through to find highest number
+
+var largestAltitude = function(gain) {
+    let altitudes = [0]
+    for(let i = 0; i < gain.length; i++){
+        let alt = altitudes[i] + gain[i]
+        altitudes.push(alt)
+    }
+    let biggest = 0
+    for(let i = 0; i < altitudes.length; i++){
+        if(altitudes[i] > biggest){
+            biggest = altitudes[i]
+        }
+    }
+    return biggest
+};
+
 
 
 
