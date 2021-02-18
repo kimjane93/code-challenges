@@ -239,6 +239,40 @@ var balancedStringSplit = function(s) {
 };
 
 
+// Deganging an IP Address - Leetcode
+
+// Given a valid (IPv4) IP address, return a defanged version of that IP address.
+// A defanged IP address replaces every period "." with "[.]".
+// Input: address = "1.1.1.1"
+// Output: "1[.]1[.]1[.]1"
+
+// pseudocode
+// simple way is to split on dots and join again on '[.]'
+
+// otherwise, create an empty array to hold your defanged address
+// create a for looop to iterate through the original address length, if value at index i is a dot, push a [.] into the new array, otherwise just push the curretn value
+// return the new defanged array 
+
+// var defangIPaddr = function(address) {
+//    return address.split('.').join('[.]')
+// }
+
+var defangIPaddr = function(address) {
+    let destrAddress = []
+    for(let i = 0; i < address.length; i++){
+        if(address[i] === '.'){
+            destrAddress.push('[.]')
+        } else {
+            destrAddress.push(address[i])
+        }
+    }
+      return destrAddress.join('')
+  };
+
+
+
+  
+
 
 // Shuffle String - Leetcode
 
