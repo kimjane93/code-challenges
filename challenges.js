@@ -202,6 +202,43 @@ var largestAltitude = function(gain) {
 
 
 
+// Split a String in Balanced Strings - Leetcode
+
+// Balanced strings are those that have an equal quantity of 'L' and 'R' characters.
+// Given a balanced string s, split it in the maximum amount of balanced strings.
+// Return the maximum amount of split balanced strings.
+// Input: s = "RLRRLLRLRL"
+// Output: 4
+// Explanation: s can be split into "RL", "RRLL", "RL", "RL", each substring contains same number of 'L' and 'R'.
+// s[i] is either 'L' or 'R'.
+// s is a balanced string.
+
+
+// pseudocode
+// set variables to watch the count of even substring occurrences of R's and L's, and a variable to count Rs and a variable to coutn Ls
+// creat a for loop iterating through string, and for each index of the string, check if it is an R or L and update the corresponding count approrpriately
+// at the end of each instance in the loop, check if the count of current r's matches the count of current l's, and if true, increment the overall count of even instances of substrings it could be split into
+// return count
+
+var balancedStringSplit = function(s) {
+    let count = 0
+    let lCount = 0
+    let rCount = 0
+    for(let i = 0; i < s.length; i ++){
+        if(s[i] === 'R'){
+            rCount++
+        }
+        if(s[i] === 'L'){
+            lCount++
+        }
+        if(lCount === rCount){
+            count++
+        }
+        }
+    return count
+};
+
+
 
 // Shuffle String - Leetcode
 
