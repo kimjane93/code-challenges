@@ -213,6 +213,10 @@ var largestAltitude = function(gain) {
 // s[i] is either 'L' or 'R'.
 // s is a balanced string.
 
+// Input: nums = [2,7,11,15], target = 9
+// Output: [0,1]
+// Output: Because nums[0] + nums[1] == 9, we return [0, 1].
+
 
 // pseudocode
 // set variables to watch the count of even substring occurrences of R's and L's, and a variable to count Rs and a variable to coutn Ls
@@ -295,6 +299,60 @@ var defangIPaddr = function(address) {
 };
 
 
+// Prison Cells After N Days - Leetcode
+// (needed to outsource why I was getting Time Limit Exceeded error on submission)
+
+// There are 8 prison cells in a row and each cell is either occupied or vacant.
+// Each day, whether the cell is occupied or vacant changes according to the following rules:
+// If a cell has two adjacent neighbors that are both occupied or both vacant, then the cell becomes occupied.
+// Otherwise, it becomes vacant.
+// Note that because the prison is a row, the first and the last cells in the row can't have two adjacent neighbors.
+// You are given an integer array cells where cells[i] == 1 if the ith cell is occupied and cells[i] == 0 if the ith cell is vacant, and you are given an integer n.
+// Return the state of the prison after n days (i.e., n such changes described above).
+
+
+// Input: cells = [0,1,0,1,1,0,0,1], n = 7
+// Output: [0,0,1,1,0,0,0,0]
+// Explanation: The following table summarizes the state of the prison on each day:
+// Day 0: [0, 1, 0, 1, 1, 0, 0, 1]
+// Day 1: [0, 1, 1, 0, 0, 0, 0, 0]
+// Day 2: [0, 0, 0, 0, 1, 1, 1, 0]
+// Day 3: [0, 1, 1, 0, 0, 1, 0, 0]
+// Day 4: [0, 0, 0, 0, 0, 1, 0, 0]
+// Day 5: [0, 1, 1, 1, 0, 1, 0, 0]
+// Day 6: [0, 0, 1, 0, 1, 1, 0, 0]
+// Day 7: [0, 0, 1, 1, 0, 0, 0, 0]
+
+
+// pseudocode
+// set a comparison row to hold the copy of the current iteration of cells
+// use while or for loop, whil n is greater than zero, instigate a for loop interating through cells.length, and reset comparison row underneath while loop so its reset to latest reorganization based off previous for loop, below that open for loop, if index-1 === index+1, splice 1 into cells for occupied, otherwise splice in 0, decrement n outside of for loop, then return cells
+
+var prisonAfterNDays = function(cells, n) {
+    if(n % 14 === 0){ 
+        n = 14;
+    }
+    else {
+        n = n % 14   
+    }
+    let comparisonRow = [...cells]
+    while(n > 0){
+        comparisonRow = [...cells]
+        for(let j = 0; j < cells.length; j++){
+            if(comparisonRow[j-1] === comparisonRow[j+1]){
+            //    cells.splice(j, 1, 1)
+            cells[j] = 1
+            } 
+            else {
+                // cells.splice(j, 1, 0)
+                cells[j] = 0
+            }
+            
+        }
+        n--
+    }
+    return cells
+};
 
 
 
