@@ -270,8 +270,33 @@ var defangIPaddr = function(address) {
   };
 
 
+// Two Sum - Leetcode 
+//   Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
+//   You may assume that each input would have exactly one solution, and you may not use the same element twice.
   
+//   You can return the answer in any order.
+
+// pseudocode
+// set an empty array to hold values
+// write a nested loop, with second loop starting at index + 1, iterating over nums, and if nums[i] + nums[j] == target, push them into new array, i first, return the new array
+
+  var twoSum = function(nums, target) {
+    let matches = []
+    for(let i = 0; i < nums.length; i++){
+        for(let j = i+1; j < nums.length; j++){
+            if(nums[i] + nums[j] == target){
+                matches.push(i)
+                matches.push(j)
+            }
+        }
+    }
+    return matches
+};
+
+
+
+
 
 
 // Shuffle String - Leetcode
