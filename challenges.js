@@ -354,8 +354,59 @@ var prisonAfterNDays = function(cells, n) {
     return cells
 };
 
+// Invalid Transactions - leetcode (solve last edge case)
+// A transaction is possibly invalid if:
 
+// the amount exceeds $1000, or;
+// if it occurs within (and including) 60 minutes of another transaction with the same name in a different city.
+// You are given an array of strings transaction where transactions[i] consists of comma-separated values representing the name, time (in minutes), amount, and city of the transaction.
 
+// Return a list of transactions that are possibly invalid. You may return the answer in any order.
+
+// Input: transactions = ["alice,20,800,mtv","alice,50,100,beijing"]
+// Output: ["alice,20,800,mtv","alice,50,100,beijing"]
+// Explanation: The first transaction is invalid because the second transaction occurs within a difference of 60 minutes, have the same name and is in a different city. Similarly the second one is invalid too.
+
+// Input: transactions = ["alice,20,800,mtv","alice,50,1200,mtv"]
+// Output: ["alice,50,1200,mtv"]
+
+// pseudocode
+// need to loop through transactions, need a nested loop, to compare each element against the rest of the array
+// if an element in the first loop matches the conditons of something in the second loop, push that data into the return array
+// need to split each index at commas, and compare idx 0, 1, 3
+var invalidTransactions = function(transactions) {
+    let invalidEvents = []
+    let splitIndices = []
+    let name = 0
+    let time = 1
+    let city = 3
+    let minTime = 60
+    for( let i = 0; i < transactions.length; i++){
+       let input = transactions[i].split(",")
+       splitIndices.push(input)
+    }
+    
+    for(let i = 0; i < splitIndices.length; i++){
+               if(splitIndices[i][2] > 1000){
+            let invalid = splitIndices[i].join(',')
+            invalidEvents = [...invalidEvents, invalid]
+          } else {
+            for(let j = i+1; j < splitIndices.length; j++){
+            if(splitIndices[j][time] - splitIndices[i][time] <= minTime){
+                if(splitIndices[j][name] === splitIndices[i][name] && splitIndices[j][city] !== splitIndices[i][city]){
+                        let invalid1 = splitIndices[i].join(',')
+                        let invalid2 = splitIndices[j].join(',')
+                        invalidEvents = [...invalidEvents, invalid1, invalid2]
+                } 
+            } 
+        }
+          }
+    }
+    console.log(invalidEvents)
+    return invalidEvents
+};
+
+// invalidTransactions(["alice,20,800,mtv","alice,50,100,mtv","alice,51,100,frankfurt"])
 
 // Shuffle String - Leetcode
 
